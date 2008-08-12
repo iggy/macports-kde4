@@ -1,3 +1,7 @@
+The git master branch is tracking kde's svn 4.1 branch
+The git 4.1-release branch uses the 4.1 release tarballs from kde's site
+
+
 Install qt first with:
 
 # sudo port -d install qt4-mac +ssl +sqlite

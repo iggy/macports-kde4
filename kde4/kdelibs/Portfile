@@ -2,17 +2,17 @@
 
 PortSystem          1.0
 name                kdelibs4
-version             4.1.0
+version             svn-r845992
 categories          kde4
 maintainers         nomaintainer
 description         kde4 base libraries
 long_description    core libraries for kde4 to function
 homepage            http://www.kde.org
 platforms           darwin
-master_sites		kde:stable/${version}/src/
+master_sites		http://64.72.114.172:81/kde-svn/
 use_bzip2           yes
 distname            kdelibs-${version}
-checksums           md5 86496aed25d4dce440418b3064a27913
+checksums           md5 8b223589a9fedd890af82cd94c2aae53
 
 depends_lib         port:qt4-mac \
 					port:strigi \
