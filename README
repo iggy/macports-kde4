@@ -1,0 +1,45 @@
+Install qt first with:
+
+# sudo port -d install qt4-mac +ssl +sqlite
+
+!!!!!! important
+qt4 breaks with a parallel builds so make sure buildmakejobs is set to 1 in 
+macports.conf for merging this port
+
+Put the ports dir somewhere (such as your home dir).
+
+Then add the following line to /opt/local/etc/macports/sources.conf:
+(make sure the file:/// line is above the rsync:// lines in that file so these
+ports take precedence)
+
+file:///Users/<name>/ports
+
+Then run:
+
+# (cd ~/ports/ && sudo portindex )
+
+
+NOTE
+also of use is to add the following to your /opt/local/etc/macports/macports.conf:
+buildmakejobs           2
+
+
+if you have trouble building boost, see the following link:
+http://lists.macosforge.org/pipermail/macports-users/2008-May/010225.html
+
+
+You might also need to run the fix-link.sh script that comes with this tarball.
+
+
+I've also had luck running kbuildsycoca4 before starting apps.
+
+
+What Doesn't Work:
+amarok2
+
+What Doesn't Build:
+kdepim
+
+What Still Needs To Be Done:
+koffice
+clean up
