@@ -1,0 +1,44 @@
+Index: kdecore/kapplication.cpp
+===================================================================
+--- kdecore/kapplication.cpp	(revision 580173)
++++ kdecore/kapplication.cpp	(working copy)
+@@ -115,6 +115,7 @@
+ #undef Status
+ #include <Carbon/Carbon.h>
+ #include <qimage.h>
++#include <QProcess>
+ #endif
+ 
+ #include <qevent.h>
+@@ -523,6 +524,31 @@
+     }
+   }
+ 
++#ifdef Q_WS_MAC
++  QString path = ::getenv("PATH");
++  path = "/opt/kde4/bin:/opt/kde4-deps/bin:/opt/qt4/bin:" + path;
++  setenv("PATH", path.toLocal8Bit().constData(), 1);
++
++  QString key, value;
++  QStringList list;                                                                                                                                                             
++
++  QProcess *dbusSession = new QProcess();
++  dbusSession->start("/opt/kde4-deps/bin/start-session-bus.sh", QStringList() << "--kde-mac");
++  dbusSession->waitForStarted();
++  dbusSession->waitForFinished();
++  QTextStream *dbusStream = new QTextStream(dbusSession);
++
++  while (!dbusStream->atEnd())
++  {
++    list = dbusStream->readLine().split("=");
++    key = list.takeFirst();
++    value = list.join("=");
++    setenv(key.toLocal8Bit().constData(), value.toLocal8Bit().constData(), 1);
++  }
++
++  dbusSession->close();
++#endif
++
+   parseCommandLine();   
+ 
+   KProcessController::ref();

@@ -1,0 +1,37 @@
+# $Id$
+
+PortSystem          1.0
+name                kdesdk4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 sdk libraries and applications
+long_description    some of the stuff you need to develop for and on kde
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		kde:stable/${version}/src/
+use_bzip2           yes
+distname            kdesdk-${version}
+
+checksums           md5 eb4e7bc753c80f617c113f31ab501168
+
+depends_lib         port:qt4-mac \
+					port:kdepimlibs4 \
+					port:kdebase4
+depends_build       port:cmake \
+					port:automoc
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

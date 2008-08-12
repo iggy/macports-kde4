@@ -1,0 +1,23 @@
+# $Id$
+
+PortSystem          1.0
+
+name                automoc
+version             0.9.84
+categories          kde4
+maintainers         nomaintainer
+description         kde4 automoc
+long_description    not really sure
+homepage            http://www.kde.org
+platforms           darwin
+master_sites        http://64.72.114.172:81/kde-svn/
+use_bzip2           yes
+distname            automoc-svn-r838458
+
+checksums           md5 cd1a437fcf116113c3b6e9511fb75f56
+
+configure	{ system "cd ${worksrcpath} && cmake ${configure.args} ${worksrcpath}" }
+configure.args		-DBUILD_SHARED_LIBS:BOOL=ON \
+					-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+					-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+					-DCMAKE_BUILD_TYPE=debugFull

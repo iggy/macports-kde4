@@ -1,0 +1,40 @@
+# $Id$
+
+PortSystem          1.0
+
+name                akonadi
+version             4.0.83
+categories          kde4
+maintainers         nomaintainer
+description         kde4 PIM storage service
+long_description    an extensible cross-desktop storage service for PIM data and meta data providing concurrent read, write, and query access
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		http://64.72.114.172:81/kde-svn/
+use_bzip2           yes
+version				r838458
+distname            akonadi-svn-${version}
+
+checksums           md5 ca96675c5597d4b0a429842fad86c512
+
+depends_lib         port:qt4-mac \
+					port:automoc4 \
+					port:boost
+depends_build       port:cmake
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure {
+    file mkdir ${worksrcpath}
+}
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

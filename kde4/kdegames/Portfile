@@ -1,0 +1,36 @@
+# $Id$
+
+PortSystem          1.0
+name                kdegames4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 games
+long_description    the games from the kdegames package
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		
+use_bzip2           yes
+distname            kdegames-${version}
+
+checksums           md5 2c0a4c089bf31ff9bd3133c3f58c4dc7
+
+depends_lib         port:qt4-mac
+depends_build       port:cmake \
+					port:automoc
+# ggz?
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

@@ -1,0 +1,44 @@
+dbus 445
+variants {universal test darwin_7} depends_build port:pkgconfig portdir devel/dbus description {A message bus system, a simple way for applications to talk to one another.} homepage http://www.freedesktop.org/Software/dbus epoch 0 platforms darwin depends_lib port:expat name dbus maintainers nomaintainer long_description {{A message bus system, a simple way for applications to talk to one another.}} version 1.2.1 categories devel revision 2
+strigi 677
+variants universal depends_build port:cmake portdir devel/strigi description {Fastest and smallest desktop searching program} homepage http://strigi.sourceforge.net/ epoch 0 platforms darwin depends_lib {port:clucene port:dbus} name strigi maintainers {clubjuggler@gmail.com openmaintainer} long_description {Strigi is a daemon which uses a very fast and efficient crawler that can index data on your harddrive. Indexing operations are performed without hammering your system, this makes Strigi the fastest and smallest desktop searching program. Strigi can index different file formats, including the contents of the archive files.} version 0.5.10 categories devel revision 0
+akonadi 425
+variants universal depends_build port:cmake portdir kde4/akonadi description {kde4 PIM storage service} homepage http://www.kde.org epoch 0 platforms darwin name akonadi depends_lib {port:qt4-mac port:automoc4 port:boost} maintainers nobody long_description {an extensible cross-desktop storage service for PIM data and meta data providing concurrent read, write, and query access} version r838458 categories kde4 revision 0
+amarok2 336
+variants universal depends_build {port:cmake port:automoc} portdir kde4/amarok2 description {amarok for kde4} homepage http://www.kde.org epoch 0 platforms darwin name amarok2 depends_lib {port:qt4-mac port:kdebase4 port:taglib} maintainers nobody long_description {Nice music player for kde} version 1.99.83 categories kde4 revision 0
+automoc 229
+variants universal description {kde4 automoc} portdir kde4/automoc homepage http://www.kde.org epoch 0 platforms darwin name automoc long_description {not really sure} maintainers nobody categories kde4 version 0.9.84 revision 0
+digikam 347
+variants universal depends_build {port:cmake port:automoc} portdir kde4/digikam description {amarok for kde4} homepage http://www.kde.org epoch 0 platforms darwin name digikam depends_lib {port:qt4-mac port:kdebase4 port:exiv2 port:taglib} maintainers nobody long_description {Nice music player for kde} version r839726 categories kde4 revision 0
+kdeadmin4 393
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdeadmin description {kde4 admin applications} homepage http://www.kde.org epoch 0 platforms darwin name kdeadmin4 depends_lib port:qt4-mac maintainers nobody long_description {apps like kcron, kdat, knetworkconf, kpackage, ksystemlog, ksysv, kuser, lilo-config, strigi-analyzer} version 4.1.0 categories kde4 revision 0
+kdeartwork4 323
+variants universal depends_build port:cmake portdir kde4/kdeartwork description {kde4 artwork} homepage http://www.kde.org epoch 0 platforms darwin name kdeartwork4 depends_lib {port:qt4-mac port:automoc} maintainers nobody long_description {artwork and associated apps for kde4} version r838458 categories kde4 revision 0
+kdebase4 349
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdebase description {kde4 base apps} homepage http://www.kde.org epoch 0 platforms darwin name kdebase4 depends_lib {port:qt4-mac port:qimageblitz port:kdelibs4} maintainers nobody long_description {kde base applications and libraries} version 4.1.0 categories kde4 revision 0
+kdebase-runtime4 365
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdebase-runtime description {kde4 base apps} homepage http://www.kde.org epoch 0 platforms darwin name kdebase-runtime4 depends_lib {port:qt4-mac port:qimageblitz port:kdelibs4} maintainers nobody long_description {kde base applications and libraries} version 4.1.0 categories kde4 revision 0
+kdegames4 314
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdegames description {kde4 games} homepage http://www.kde.org epoch 0 platforms darwin name kdegames4 depends_lib port:qt4-mac maintainers nobody long_description {the games from the kdegames package} version 4.1.0 categories kde4 revision 0
+kdelibs4 379
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdelibs description {kde4 base libraries} homepage http://www.kde.org epoch 0 platforms darwin name kdelibs4 depends_lib {port:qt4-mac port:strigi port:giflib port:shared-mime-info port:pcre} maintainers nobody long_description {core libraries for kde4 to function} version 4.1.0 categories kde4 revision 0
+kdemultimedia4 358
+variants universal depends_build port:cmake portdir kde4/kdemultimedia description {kde4 multimedia applications} homepage http://www.kde.org epoch 0 platforms darwin name kdemultimedia4 depends_lib {port:qt4-mac port:automoc} maintainers nobody long_description {kde4 applications for playing audio and video files} version 4.1.0 categories kde4 revision 0
+kdepim4 382
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdepim description {kde4 personal information manager applications} homepage http://www.kde.org epoch 0 platforms darwin name kdepim4 depends_lib {port:qt4-mac port:kdepimlibs4} maintainers nobody long_description {kde4 PIM (personal information manager) applications} version 4.1.0 categories kde4 revision 0
+kdepimlibs4 408
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdepimlibs description {kde4 base PIM libraries} homepage http://www.kde.org epoch 0 platforms darwin name kdepimlibs4 depends_lib {port:qt4-mac port:boost port:gpgme port:akonadi} maintainers nobody long_description {core libraries for kde4 PIM (personal information manager) apps to function} version 4.1.0 categories kde4 revision 0
+kdesdk4 385
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdesdk description {kde4 sdk libraries and applications} homepage http://www.kde.org epoch 0 platforms darwin name kdesdk4 depends_lib {port:qt4-mac port:kdepimlibs4 port:kdebase4} maintainers nobody long_description {some of the stuff you need to develop for and on kde} version 4.1.0 categories kde4 revision 0
+kdesupport4 332
+variants universal portdir kde4/kdesupport description {kde4 support stuff} homepage http://www.kde.org epoch 0 platforms darwin name kdesupport4 depends_lib {port:qt4-mac port:clucene port:qca port:shared-mime-info} maintainers nobody long_description {support stuff for kde4 to function} version 4.0.83 categories kde4 revision 0
+kdevelop4 367
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdevelop description {kde4 development apps} homepage http://www.kde.org epoch 0 platforms darwin name kdevelop4 depends_lib {port:qt4-mac port:kdelibs4 port:kdevplatform4} maintainers nobody long_description {kde development applications and libraries} version 4.1.0 categories kde4 revision 0
+kdevplatform4 356
+variants universal depends_build {port:cmake port:automoc} portdir kde4/kdevplatform description {kde4 development apps} homepage http://www.kde.org epoch 0 platforms darwin name kdevplatform4 depends_lib {port:qt4-mac port:kdelibs4} maintainers nobody long_description {kde development applications and libraries} version 4.1.0 categories kde4 revision 0
+phonon 320
+variants universal depends_build port:cmake portdir kde4/phonon description {kde4 multimedia API} homepage http://www.kde.org epoch 0 platforms darwin name phonon depends_lib {port:qt4-mac port:automoc} maintainers nobody long_description {if you want kdebase4, you need this} version r838458 categories kde4 revision 0
+qimageblitz 372
+variants universal depends_build {port:cmake port:automoc} portdir kde4/qimageblitz description qimageblitz homepage http://www.kde.org epoch 0 platforms darwin name qimageblitz depends_lib {port:qt4-mac port:boost port:gpgme port:akonadi} maintainers nobody long_description {not really sure what this is, but kdebase needs it} version r838458 categories kde4 revision 0
+xine-lib 442
+variants universal portdir multimedia/xine-lib description {xine-lib is a free multimedia engine, released under the GPL.} homepage http://xine.sf.net/ epoch 0 platforms darwin name xine-lib depends_lib {lib:libX11.6:XFree86 port:esound port:aalib port:libvorbis port:libogg port:flac} long_description {{xine-lib is a free multimedia engine, released under the GPL.}} maintainers nomaintainer version 1.1.14 categories multimedia revision 0

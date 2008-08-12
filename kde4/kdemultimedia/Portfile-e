@@ -1,0 +1,38 @@
+# $Id$
+
+PortSystem          1.0
+name                kdemultimedia4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 multimedia applications
+long_description    kde4 applications for playing audio and video files
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		kde:stable/${version}/src/
+use_bzip2           yes
+distname            kdemultimedia-${version}
+
+checksums           md5 7965e42c3de193bde7f1e5437c9bedec
+
+#patchfiles			kdecore.patch kinit.patch
+
+depends_lib         port:qt4-mac \
+					port:automoc
+depends_build       port:cmake
+# libvorbis musicbrainz tunepimp and something else that I missed because it scrolled off the screen
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

@@ -1,0 +1,39 @@
+# $Id$
+
+PortSystem          1.0
+
+name                phonon
+version             4.0.83
+categories          kde4
+maintainers         nomaintainer
+description         kde4 multimedia API
+long_description    if you want kdebase4, you need this
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		http://64.72.114.172:81/kde-svn/
+use_bzip2           yes
+version				r838458
+distname            phonon-svn-${version}
+
+checksums           md5 83d9c8680175933aa25701faf34a3259
+
+depends_lib         port:qt4-mac \
+					port:automoc
+depends_build       port:cmake
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure {
+    file mkdir ${worksrcpath}
+}
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

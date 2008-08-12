@@ -1,0 +1,37 @@
+# $Id$
+
+PortSystem          1.0
+name                kdevelop4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 development apps
+long_description    kde development applications and libraries
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		http://64.72.114.172:81/kde-svn/
+use_bzip2           yes
+distname            kdevelop-svn-r841752
+
+checksums           md5 2d657e112cd89f8b1ba0865dffa051e3
+
+depends_lib         port:qt4-mac \
+					port:kdelibs4 \
+					port:kdevplatform4
+depends_build       port:cmake \
+					port:automoc
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

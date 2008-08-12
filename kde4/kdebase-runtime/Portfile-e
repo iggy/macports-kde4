@@ -1,0 +1,39 @@
+# $Id$
+
+PortSystem          1.0
+name                kdebase-runtime4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 base apps
+long_description    kde base applications and libraries
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		kde:stable/${version}/src/
+use_bzip2           yes
+distname            kdebase-runtime-${version}
+
+checksums           md5 a19999207ad37131a2888b6e32160008
+
+depends_lib         port:qt4-mac \
+					port:qimageblitz \
+					port:kdelibs4
+#					port:phonon \
+# soprano nepomuk samba openexr alsa xkb xine
+depends_build       port:cmake \
+					port:automoc
+
+use_parallel_build  yes
+
+worksrcdir      build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
+

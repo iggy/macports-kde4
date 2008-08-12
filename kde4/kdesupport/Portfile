@@ -1,0 +1,57 @@
+# $Id$
+
+PortSystem          1.0
+
+name                kdesupport4
+version             4.0.83
+categories          kde4
+maintainers         nomaintainer
+description         kde4 support stuff
+long_description    support stuff for kde4 to function
+homepage            http://www.kde.org
+platforms           darwin
+master_sites        http://kdesvn-build.kde.org/other/
+use_bzip2           yes
+distname            kdesupport-trunk-svn-r640005
+distfiles           ${distname}.tar.bz2
+
+checksums           md5 a762bd5982edcb97a17b5697fddc4f9a \
+                    sha1 7c2deff2271fbc3436dd778deafad383ca42783c \
+                    rmd160 9ef048b575774ab3af147c1f60d87c94c397639e
+
+#patchfiles			kdecore.patch kinit.patch
+
+depends_lib         port:qt4-mac \
+					port:clucene \
+					port:qca \
+					port:shared-mime-info
+#					port:strigi \
+depends_build       port:cmake
+
+#configure.args      
+#platform darwin 9 {}
+#platform darwin 8 {}
+
+# get files from local svn repo, but don't update from svn.kde.org
+pre-configure      {
+                   system "pwd"
+                   system "cd ${worksrcpath} && sh prepare-svn.sh --no-update"
+                   # --no-update
+}
+#configure	{ system "mkdir ${workpath}/build && cd ${workpath}/build && ${prefix}/bin/cmake ${worksrcpath} ${configure.args}" }
+configure	{ system "cd ${worksrcpath} && cmake ${configure.args} ${worksrcpath}" }
+configure.args	-DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-DBUILD_qca:BOOL=OFF \
+		-DBUILD_soprano:BOOL=OFF \
+		-DBUILD_strigi:BOOL=OFF \
+		-Wno-dev
+
+# FIXME don't know if soprano and strigi are actually useful on osx, but they don't build on it
+
+#build	{ system "cd ${workpath}/build && make VERBOSE=1" }
+#destroot { system "mkdir ${destroot} && cd ${workpath}/build && make DESTDIR=\"${destroot}\"" }
+
+#destroot.destdir    DESTDIR="${destroot}"

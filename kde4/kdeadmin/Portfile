@@ -1,0 +1,36 @@
+# $Id$
+
+PortSystem          1.0
+
+name                kdeadmin4
+version             4.1.0
+categories          kde4
+maintainers         nomaintainer
+description         kde4 admin applications
+long_description	apps like kcron, kdat, knetworkconf, kpackage, ksystemlog, \
+					ksysv, kuser, lilo-config, strigi-analyzer
+homepage            http://www.kde.org
+platforms           darwin
+master_sites		kde:stable/${version}/src/
+use_bzip2           yes
+distname            kdeadmin-${version}
+
+checksums           md5 
+
+depends_lib         port:qt4-mac
+depends_build       port:cmake \
+					port:automoc
+
+use_parallel_build  yes
+
+worksrcdir			build
+
+pre-configure { file mkdir ${worksrcpath} }
+
+configure.cmd		cmake
+
+configure.args	../${distname} -DBUILD_SHARED_LIBS:BOOL=ON \
+		-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+		-DCMAKE_INSTALL_PREFIX:PATH=${prefix} \
+		-DCMAKE_BUILD_TYPE=debugFull \
+		-Wno-dev
